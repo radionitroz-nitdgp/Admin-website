@@ -3,13 +3,12 @@ import { getAuth } from "firebase/auth";
 import {getFirestore} from 'firebase/firestore'
 
 const firebaseConfig = {
-   apiKey: "AIzaSyABqWQmytPXzyjoZ6mrlAkjAeSWKdV1WsE",
-  authDomain: "nitroz-a8008.firebaseapp.com",
-  projectId: "nitroz-a8008",
-  storageBucket: "nitroz-a8008.appspot.com",
-  messagingSenderId: "910848554564",
-  appId: "1:910848554564:web:f8c5e25741329a7bf2ae11",
-  measurementId: "G-VYBCCM1T7X"
+  apiKey: "AIzaSyCNG7BzUqnjW5OGxTf7SQbnRT5OFRc8Puk",
+  authDomain: "admin-web-page.firebaseapp.com",
+  projectId: "admin-web-page",
+  storageBucket: "admin-web-page.appspot.com",
+  messagingSenderId: "148361693679",
+  appId: "1:148361693679:web:6c82cb8dc104aff9808e1a"
 };
 
 const app = initializeApp(firebaseConfig);
