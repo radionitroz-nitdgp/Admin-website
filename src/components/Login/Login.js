@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { isUser } from "../PrivateRoute/PrivateRoute";
@@ -15,6 +15,12 @@ function Login() {
   });
   const [errorMsg, setErrorMsg] = useState("");
   const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+  const [user,setUser] = useState([])
+  useEffect(()=>{
+  localStorage.setItem("isUser",JSON.stringify(false))
+},[user])
+  
+
 
   const handleSubmission = () => {
     if (!values.email || !values.pass) {
@@ -30,7 +36,9 @@ function Login() {
         console.log("login")
     console.log(window.isUser)
     window.isUser = true
+    localStorage.setItem('isUser',JSON.stringify(true))
          navigate("/home");
+         console.log("Logged in")
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);

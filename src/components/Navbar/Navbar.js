@@ -3,26 +3,25 @@ import React from 'react'
 import {  NavLink } from 'react-router-dom'
 import {Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { auth } from '../../firebase'
+import { signOut } from 'firebase/auth'
 
-// const Signout = ()=>{
-//   const navigate = useNavigate()
-//   signOut(auth).then(()=>{
-    
-//   }).catch((err) =>{
-//     console.log("err : " +err )
-//   })
-// }
+ const Signout = ()=>{
+   const navigate = useNavigate()
+   signOut(auth).then(()=>{
+    localStorage.setItem('isUser',JSON.stringify(false));
+    navigate("/",{replace:true});
+    console.log("logged out")
+   }).catch((err) =>{
+     console.log("err : " +err )
+   })
+ }
 const user = () =>{
   window.isUser = false;
   console.log(window.isUser);
 }
 
-const Signout = () =>{
-  
-  const navigate = useNavigate()
-navigate("/");
-    console.log("Sign Out",{replace:true})
-}
+
 
 function Navbar() {
   return (
