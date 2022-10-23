@@ -14,6 +14,7 @@ const EventData = { Event_Name : eventName,
     Description : description}
 const submit = async(e)=>{
   e.preventDefault();
+ 
   console.log(eventName)
 console.log(description)
 try{
@@ -22,19 +23,17 @@ try{
   //  })
    const docref = doc(db,'Main','Events')
    await updateDoc(docref,{EventList : arrayUnion(EventData)})
-  
+   const storage = getStorage()
+  const storageRef = ref(storage,`Events/${eventName}.jpg`)
+ uploadBytes(storageRef, file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+});
 }catch(e){
   console.log(e)
 }
 }
 
-const UploadTask = ()=>{
-   const storage = getStorage()
-  const storageRef = ref(storage,`Events/${eventName}`)
- uploadBytes(storageRef, file).then((snapshot) => {
-  console.log('Uploaded a blob or file!');
-});
-}
+
 
   return (
     <>
@@ -48,13 +47,13 @@ const UploadTask = ()=>{
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
+        <Form.Label>Enter Event Description</Form.Label>
         <Form.Control as="textarea" rows={3} onChange={(e)=>{setDescription(e.target.value)}}/>
       </Form.Group>
        <Form.Group controlId="formFile" className="mb-3">
         <Form.Label> Upload A Event Poster </Form.Label>
         <Form.Control type="file" onChange={(e)=>{setFile(e.target.files[0])}} />
-        <Button  variant='outline-warning'onClick={UploadTask} >Upload</Button>
+       
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit
