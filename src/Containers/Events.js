@@ -18,9 +18,7 @@ const submit = async(e)=>{
   console.log(eventName)
 console.log(description)
 try{
-  //  const docref = await setDoc(doc(db, 'Main' ,'Events'),{
-  //   EventData
-  //  })
+  
    const docref = doc(db,'Main','Events')
    await updateDoc(docref,{EventList : arrayUnion(EventData)})
    const storage = getStorage()
@@ -38,7 +36,7 @@ try{
   return (
     <>
    <Navbar/>
-    <div>Events</div>
+  
      <Container>
     <Form method='post' onSubmit={submit}>
       <Form.Group className="mb-3" controlId="formBasicText">

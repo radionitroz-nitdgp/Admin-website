@@ -1,0 +1,12 @@
+.Navlinks {
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    transition: all 0.2S;
+}
+
+.NavActive {
+    background-color: wheat;
+    color: black;
+}
