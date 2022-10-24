@@ -28,7 +28,7 @@ function Login() {
       return;
     }
     setErrorMsg("");
-
+   console.log("gsgxs")
     setSubmitButtonDisabled(true);
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {

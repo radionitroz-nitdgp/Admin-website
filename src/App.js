@@ -14,11 +14,15 @@ import Alumni from './Containers/Alumni'
 import Events from './Containers/Events'
 import Gallery from './Containers/Gallery'
 import Sponsers from './Containers/Sponsers'
-import TeamMembers from './Containers/TeamMembers'
+
 import VideoSeries from './Containers/VideoSeries'
  import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './components/Home/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import FirstYearForm from './Containers/TeamMembers/FirstYearForm'
+import SecondYearForm from './Containers/TeamMembers/SecondYearForm'
+import ThirdYearForm from './Containers/TeamMembers/ThirdYearForm'
+import FinalYearForm from './Containers/TeamMembers/FinalYearForm'
 
 function App() {
  
@@ -36,7 +40,10 @@ function App() {
           <Route path="/Alumni"  element={<PrivateRoute><Alumni /></PrivateRoute>} />
           <Route path="/Gallery"  element={<PrivateRoute><Gallery /></PrivateRoute>} />
           <Route path="/Sponsers"  element={<PrivateRoute><Sponsers /></PrivateRoute>} />
-          <Route path="/TeamMembers"  element={<PrivateRoute><TeamMembers /></PrivateRoute>} />
+          <Route path="/TeamMembers/FirstYearForm"  element={<PrivateRoute><FirstYearForm /></PrivateRoute>} />
+          <Route path="/TeamMembers/SecondYearForm"  element={<PrivateRoute><SecondYearForm /></PrivateRoute>} />
+          <Route path="/TeamMembers/ThirdYearForm"  element={<PrivateRoute><ThirdYearForm /></PrivateRoute>} />
+          <Route path="/TeamMembers/FinalYearForm"  element={<PrivateRoute><FinalYearForm /></PrivateRoute>} />
           <Route path="/VideoSeries"  element={<PrivateRoute><VideoSeries /></PrivateRoute>} />
         
       </Routes>

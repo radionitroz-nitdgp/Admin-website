@@ -33,7 +33,7 @@ function Navbar() {
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/Alumni'}> Alumni</NavLink>
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/Gallery'}> Gallery</NavLink>
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/Sponsers'}> Sponsers</NavLink>
-          <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/TeamMembers'}> TeamMembers</NavLink>
+          <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/TeamMembers/FirstYearForm'}> TeamMembers</NavLink>
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/VideoSeries'}> VideoSeries</NavLink>
           <Button className="bg-primary" onClick={()=>{Signout();user()}}>Signout</Button>
         </div>

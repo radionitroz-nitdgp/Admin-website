@@ -10,3 +10,7 @@
 .inputField:focus {
     background: rgba(195, 195, 195, 0);
 }
+
+.subBtn {
+    display: none;
+}

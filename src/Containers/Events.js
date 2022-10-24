@@ -37,19 +37,19 @@ try{
     <>
    <Navbar/>
   
-     <Container>
+     <Container className='Container-FormBox py-4 px-lg-5 my-3'>
     <Form method='post' onSubmit={submit}>
       <Form.Group className="mb-3" controlId="formBasicText">
-        <Form.Label>Enter Event Name</Form.Label>
+        <Form.Label className='text-white'>Enter Event Name</Form.Label>
         <Form.Control type="text" placeholder="Event Name" onChange={(e)=>{setName(e.target.value)}} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Enter Event Description</Form.Label>
+        <Form.Label className='text-white'>Enter Event Description</Form.Label>
         <Form.Control as="textarea" rows={3} onChange={(e)=>{setDescription(e.target.value)}}/>
       </Form.Group>
        <Form.Group controlId="formFile" className="mb-3">
-        <Form.Label> Upload A Event Poster </Form.Label>
+        <Form.Label className='text-white'> Upload A Event Poster </Form.Label>
         <Form.Control type="file" onChange={(e)=>{setFile(e.target.files[0])}} />
        
       </Form.Group>
