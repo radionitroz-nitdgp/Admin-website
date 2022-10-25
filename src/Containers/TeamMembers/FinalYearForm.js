@@ -18,22 +18,25 @@ const MemberData = {
   email : email,
   number : number
 }
+const submitbtn = document.getElementById("submit")
+
 const submitData = async(e)=>{
   e.preventDefault();
  try{
   const docref = doc(db,'Main','Members')
   await updateDoc(docref,{ Final_Year_List : arrayUnion(MemberData)})
+  submitbtn.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Submitting";
   if(file !=null) {
-
     const storage = getStorage()
     const storageRef = ref(storage,`Members/Final_Year/${MemberData.Name}.jpg`)
    uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded a blob or file!');
    });
-
   }
-   alert("Data Submitted. ")
+   submitbtn.innerHTML = "Submitted";
+  alert("Data Uploaded Succesfully")
   document.getElementById("form").reset();
+  submitbtn.innerHTML = "Submit";
  }catch(e){
   console.log(e)
  }
@@ -47,7 +50,7 @@ const submitData = async(e)=>{
     <MemberFormNavbar/>
   </Container>
  <div id="HeadingLine" className="text-center h3 text-white">Fill Final Year Data</div>
-    <Form method='post'autoComplete='off' id="form" >
+    <Form method='post'autoComplete='off' novalidate validated id="form" onSubmit={submitData}>
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label className='text-white'>Enter Member Name</Form.Label>
         <Form.Control type="text" placeholder="Event Name"  onChange={(e)=>{setname(e.target.value)}} required/>
@@ -65,10 +68,10 @@ const submitData = async(e)=>{
       </Form.Group>
        <Form.Group controlId="formFile" className="mb-3">
         <Form.Label className='text-white'> Upload A Profile Photo </Form.Label>
-        <Form.Control type="file" accept='.jpg,.jpeg,.webp,.png' onChange={(e)=>{setfile(e.target.files[0])}} />
+        <Form.Control type="file" accept='.jpg,.jpeg,.webp,.png' onChange={(e)=>{setfile(e.target.files[0])}} required/>
        
       </Form.Group>
-      <Button variant="primary"   onClick={submitData} type="submit">Submit</Button>
+      <Button variant="primary"    type="submit" id="submit">Submit</Button>
     </Form>
   </Container>
     </>

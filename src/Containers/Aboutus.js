@@ -7,21 +7,24 @@ import {useState , } from 'react'
 import {setDoc ,doc, onSnapshot, getDoc} from 'firebase/firestore'
 import {db} from '../firebase'
 import './Container.css'
-import {updateMetadata} from 'firebase/storage'
 
 
 function Aboutus() {
  const [text,setText] = useState("");
 //  const [AboutUsData,setData] = useState("");
-
+const submitbtn = document.getElementById("submit")
  const Submit = async(e) =>{
 e.preventDefault();
+submitbtn.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Submitting";
 console.log(text)
 try{
- const docref =  await setDoc(doc(db,"Main","About_Us"),{
+  const docref =  await setDoc(doc(db,"Main","About_Us"),{
     Description : text
   });
-   alert("About Us Description Uploaded");
+  submitbtn.innerHTML = "Submitted";
+  alert("Data Uploaded Succesfully")
+  document.getElementById("form").reset();
+  submitbtn.innerHTML = "Submit";
 }catch(e){
   console.log(e)
 }
@@ -55,25 +58,25 @@ const docref = doc(db,"Main","About_Us")
     <textarea name="" id="input" className='form-control' cols="30" rows="10" onChange={(event) =>{setText(event.target.value)}}></textarea>
     <button type='submit' className='btn btn-primary text-center' >Submit</button>
      </form> */}
-     <Form method='post'  id="form" onSubmit={Submit}>
+     <Form method='post' novalidate validated id="form" onSubmit={Submit}>
      
 
-      <Form.Group className="mb-3"  controlId="exampleForm.ControlTextarea1">
+      <Form.Group className="mb-3 "  controlId="exampleForm.ControlTextarea1">
         <Form.Label className=' text-center text-white fs-5' >Enter the About Section</Form.Label>
-        <Form.Control className='inputField' id="input" as="textarea" style={{color:"white"}}  onChange={(e) =>{setText(e.target.value)}} rows={5} />
+        <Form.Control  id="input" as="textarea" placeholder='Enter Here'  onChange={(e) =>{setText(e.target.value)}} rows={5} required />
       </Form.Group>
     
-      <Button variant="outline-warning"  className='text-center py-2' type="submit">
+      <Button variant="primary"  className='text-center py-2' type="submit" id="submit">
         Submit
       </Button>
     </Form>
    
     </Container>
-    <Container className='Container-FormBox py-4 px-lg-5 my-3'>
+    {/* <Container className='Container-FormBox py-4 px-lg-5 my-3'>
     <div className="text-center display-6 text-white">View About-Us </div>
      <Button variant="outline-warning" onClick={getData}  className='text-center py-2'>View Data</Button>
      <Container id="AboutUsContainer text-white h4">Data</Container>
-    </Container>
+    </Container> */}
     </>
   )
 }
