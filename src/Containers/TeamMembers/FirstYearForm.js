@@ -26,9 +26,7 @@ const submitData = async(e)=>{
   const docref = doc(db,'Main','Members')
   await updateDoc(docref,{ First_Year_List : arrayUnion(MemberData)})
   submitbtn.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Submitting";
-
   if(file !=null){
-
     const storage = getStorage()
     const storageRef = ref(storage,`Members/First_Year/${MemberData.Name}.jpg`)
    uploadBytes(storageRef, file).then((snapshot) => {
@@ -52,7 +50,7 @@ const submitData = async(e)=>{
     <MemberFormNavbar/>
   </Container>
  <div id="HeadingLine" className="text-center h3 text-white">Fill First Year Data</div>
-    <Form method='post'autoComplete='off' id="form" >
+    <Form method='post'autoComplete='off' validated noValidate id="form" >
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label className='text-white'>Enter Member Name</Form.Label>
         <Form.Control type="text" placeholder="Event Name"  onChange={(e)=>{setname(e.target.value)}} required/>

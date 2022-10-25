@@ -4,6 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { isUser } from "../PrivateRoute/PrivateRoute";
 import InputControl from "./InputControl/InputControl";
 import { auth } from "../../firebase";
+import {Container,Form,Button} from 'react-bootstrap'
 
 import styles from "./Login.module.css";
 
@@ -20,7 +21,7 @@ function Login() {
   localStorage.setItem("isUser",JSON.stringify(false))
 },[user])
   
-
+const LoginBtn = document.getElementById("LoginBtn")
 
   const handleSubmission = () => {
     if (!values.email || !values.pass) {
@@ -29,6 +30,7 @@ function Login() {
     }
     setErrorMsg("");
    console.log("gsgxs")
+   LoginBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Logging'
     setSubmitButtonDisabled(true);
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
@@ -39,6 +41,7 @@ function Login() {
     localStorage.setItem('isUser',JSON.stringify(true))
          navigate("/home");
          console.log("Logged in")
+         LoginBtn.innerHTML = 'Login'
       })
       .catch((err) => {
         setSubmitButtonDisabled(false);
@@ -50,25 +53,25 @@ function Login() {
       <div className={styles.innerBox}>
         <h1 className={styles.heading}>Login</h1>
 
-        <InputControl
-          label="Email"
-          onChange={(event) =>
+        
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label >Enter Email ID</Form.Label>
+        <Form.Control type="email" placeholder="Email ID"  onChange={(event) =>
             setValues((prev) => ({ ...prev, email: event.target.value }))
-          }
-          placeholder="Enter email address"
-        />
-        <InputControl
-          label="Password"
-          onChange={(event) =>
+          } required/>
+      </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicText">
+        <Form.Label >Enter Password</Form.Label>
+        <Form.Control type="password" placeholder="password"  onChange={(event) =>
             setValues((prev) => ({ ...prev, pass: event.target.value }))
-          }
-          placeholder="Enter Password"
-        />
+          } required/>
+      </Form.Group>
 
         <div className={styles.footer}>
           <b className={styles.error}>{errorMsg}</b>
-          <button disabled={submitButtonDisabled} onClick={handleSubmission}>
-            Login
+          <button disabled={submitButtonDisabled} onClick={handleSubmission} id="LoginBtn">
+            Login 
           </button>
          
         </div>

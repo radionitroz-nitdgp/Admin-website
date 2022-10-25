@@ -51,7 +51,7 @@ const submitData = async(e)=>{
   <Container className='Container-FormBox py-4 px-lg-5 my-3'>
      
  <div id="HeadingLine" className="text-center h3 text-white">Fill Gallery Data</div>
-    <Form  method='post'autoComplete='off' noValidate validated id="form" >
+    <Form  method='post'autoComplete='off' noValidate validated id="form" onSubmit={submitData} >
       <Form.Group className="mb-3" controlId="formBasicText">
         <Form.Label className='text-white'>Enter Gallery Name</Form.Label>
         <Form.Control type="text" placeholder="Gallery Name"  onChange={(e)=>{setname(e.target.value)}} required/>

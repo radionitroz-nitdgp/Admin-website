@@ -32,7 +32,6 @@ const submitData = async(e)=>{
    uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded a blob or file!');
    });
-
   }
    submitbtn.innerHTML = "Submitted";
   alert("Data Uploaded Succesfully")

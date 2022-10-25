@@ -19,7 +19,6 @@ const SponserData = {
   url : url
 }
 const submitbtn = document.getElementById("submit")
-
 const submitData = async(e)=>{
   e.preventDefault();
  submitbtn.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Submitting";
