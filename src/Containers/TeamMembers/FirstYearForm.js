@@ -13,6 +13,7 @@ function FirstYearForm() {
 const [email,setemail] = useState("")
 const [number,setnumber] = useState("")
 const [file,setfile] = useState(null)
+const submitbtn = document.getElementById("submit")
 
 const MemberData = {
   Name : name,
@@ -24,6 +25,8 @@ const submitData = async(e)=>{
  try{
   const docref = doc(db,'Main','Members')
   await updateDoc(docref,{ First_Year_List : arrayUnion(MemberData)})
+  submitbtn.innerHTML = "<i class='fa fa-spinner fa-spin'></i> Submitting";
+
   if(file !=null){
 
     const storage = getStorage()
@@ -32,8 +35,10 @@ const submitData = async(e)=>{
     console.log('Uploaded a blob or file!');
    });
   }
-  alert("Data Submitted. ")
+  submitbtn.innerHTML = "Submitted";
+  alert("Data Uploaded Succesfully")
   document.getElementById("form").reset();
+  submitbtn.innerHTML = "Submit";
  }catch(e){
   console.log(e)
  }
@@ -65,10 +70,10 @@ const submitData = async(e)=>{
       </Form.Group>
        <Form.Group controlId="formFile" className="mb-3">
         <Form.Label className='text-white'> Upload A Profile Photo </Form.Label>
-        <Form.Control type="file" accept='.jpg,.jpeg,.webp,.png' onChange={(e)=>{setfile(e.target.files[0])}} />
+        <Form.Control type="file" accept='.jpg,.jpeg,.webp,.png' onChange={(e)=>{setfile(e.target.files[0])}} required/>
        
       </Form.Group>
-      <Button variant="primary"  id='FirstYear'  onClick={submitData} type="submit">Submit</Button>
+      <Button variant="primary"   onClick={submitData} type="submit" id="submit">Submit</Button>
     </Form>
   </Container>
     </>

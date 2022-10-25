@@ -27,7 +27,7 @@ const user = () =>{
 function MemberFormNavbar() {
   return (
     <>
-       <div className="NavlinkContainer my-4 mx-5 pr-3 d-inline-block align-content-center">  
+       <div className="NavlinkContainer d-flex flex-column flex-md-row  my-4 mx-5 pr-3 d-inline-block align-content-center">  
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/TeamMembers/FirstYearForm'}>  First Year</NavLink>
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/TeamMembers/SecondYearForm'}>  Second Year</NavLink>
           <NavLink className={({isActive})=> (isActive? "Navlinks  NavActive px-2 py-2 mx-3" : "Navlinks  px-2 py-2 mx-3")} to={'/TeamMembers/ThirdYearForm'}> Third Year</NavLink>
