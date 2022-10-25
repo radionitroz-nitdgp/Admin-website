@@ -1,0 +1,16 @@
+.Container-FormBox {
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.inputField {
+    background: rgba(226, 215, 215, 0);
+}
+
+.inputField:focus {
+    background: rgba(195, 195, 195, 0);
+}
+
+.subBtn {
+    display: none;
+}
